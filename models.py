@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, F
 from sqlalchemy.orm import declarative_base
 from sqlalchemy_utils.types import ChoiceType
 
+
 #criar a conexao do banco de dados
 db = create_engine("sqlite:///banco.db")
 
@@ -10,17 +11,17 @@ Base = declarative_base()
 
 #cria as classes/tabelas do banco
 class usuarios(Base):
-    __tablename__= "usuarios"
+    __tablename__= "Usuarios"
     
     id= Column("id", Integer, primary_key= True, autoincrement=True) #primary_key normalmente em IDs/ autoincrement para criar os IDs em sequencia (1, 2,3... )
-    name= Column("Name", String)
+    nome= Column("Name", String)
     email= Column("email", String, nullable= False) #"nullable= False" não deixa criar um user sem o parametro gmail
     senha= Column("senha", String)
     ativo= Column("ativo", Boolean)
     admin= Column("admin", Boolean, default= False) #"defaut= false" deixa criar um user sem o parametro admin
 
-    def __init__(self, name, email, senha, ativo= True, admin=False):
-        self.name = name
+    def __init__(self, nome, email, senha, ativo= True, admin=False):
+        self.nome = nome
         self.email = email
         self.senha = senha
         self.ativo = ativo
